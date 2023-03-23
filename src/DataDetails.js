@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Table,Button} from 'react-bootstrap'
 
 export default function DataDetails( {data, onSendMessage}) {
     
@@ -13,16 +14,29 @@ export default function DataDetails( {data, onSendMessage}) {
     <div>
       {/* {data.map((d)=> {return (<ul key={d.id}> {d.login}  {d.id}  {d.avatar_url} </ul>)})} */}
 
-      <ul>
-        <li>LOGIN:{data.login}</li>
-        <li>AVATAR_URL:{data.avatar_url}</li>
-        <li>BIO:{data.bio}</li>
-        <li>LOCATION:{data.location}</li>
+
+        
+        <Table striped bordered hover variant="dark">
+      <thead>
+        <tr>
+        <th>LOGIN
+            <tr>{data.login}</tr>
+        </th>
+        <th>AVATAR_URL
+            <tr>{data.avatar_url}</tr>
+        </th>
+        <th>BIO<tr>
+        {data.bio}</tr></th>
+        <th>LOCATION<tr>
+        {data.location}</tr></th>
+        </tr>
+      </thead>
+        </Table>   
       
-        </ul>   
-      
-        <button onClick={handleSendMessage}>Send Message to App</button>
+        <Button variant="outline-dark" onClick={handleSendMessage}>Send Message to App</Button>
      
+
+      
      
      
      
