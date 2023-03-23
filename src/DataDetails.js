@@ -1,12 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Table,Button} from 'react-bootstrap'
+import { useState } from 'react';
 
 export default function DataDetails( {data, onSendMessage}) {
-    
+   const [message,setMessage]=useState('');
 
     const handleSendMessage = () =>{
         onSendMessage(data.id,data.login,data.bio);
+        const newMes = 'Pogledajte u konzolu :)'
+        setMessage(newMes)
+        return message;
+        
     }
 
    
@@ -34,7 +39,10 @@ export default function DataDetails( {data, onSendMessage}) {
         </Table>   
       
         <Button variant="outline-dark" onClick={handleSendMessage}>Send Message to App</Button>
-     
+        <br/>
+        <hr></hr>
+        
+        {message}
 
       
      
