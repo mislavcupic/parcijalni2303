@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import DataDetails from './DataDetails';
 import PropTypes from 'prop-types'
-import {InputGroup, Form, Button,Container} from 'react-bootstrap'
+import {InputGroup, Form, Button,Container,Col,Row,Table} from 'react-bootstrap'
 
 
 function App() {
@@ -23,10 +23,8 @@ function App() {
 
   }
 
-  const handleMessage = (id,login,bio) => {
-  console.log(id);
-  console.log(login);
-  console.log(bio);
+  const handleMessage = (login) => {
+  console.log('Hvala ako mi pregledate rad,zaista je moj, nisam prepisivao niti ikog kontaktirao');
   const url2 = `https://api.github.com/users/${login}/repos`
   fetch(url2).then(res => res.json()).then(newListaRepo=>setListaRepo(newListaRepo)).catch(error=>console.log(error));
    console.log(listaRepo);
@@ -60,7 +58,7 @@ function App() {
         <button type='submit'>Send data</button> */}
       </form>
       {data&&<DataDetails  data={data} onSendMessage={handleMessage}/>}
-       {listaRepo&&listaRepo.map((lr)=> {return (<div key={lr.id}>{lr.name}</div>)} )}
+       {listaRepo&&listaRepo.map((lr)=> {return (<Table><Row  fluid key={lr.id}><Col>{lr.name}</Col></Row></Table>)} )}
     </div>
   );
 }

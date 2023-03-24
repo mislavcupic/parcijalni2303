@@ -7,7 +7,7 @@ export default function DataDetails( {data, onSendMessage}) {
    const [message,setMessage]=useState('');
 
     const handleSendMessage = () =>{
-        onSendMessage(data.id,data.login,data.bio);
+        onSendMessage(data.login);
         const newMes = 'Pogledajte u konzolu :)'
         setMessage(newMes)
         return message;
