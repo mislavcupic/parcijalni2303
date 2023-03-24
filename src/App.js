@@ -8,6 +8,7 @@ import {InputGroup, Form, Button,Container} from 'react-bootstrap'
 function App() {
   const [username,setUsername] = useState ('')
   const [data,setData] = useState();
+  const [listaRepo,setListaRepo]=useState([]);
 
   const handleSubmit =  (e) =>{
     e.preventDefault();
@@ -26,6 +27,9 @@ function App() {
   console.log(id);
   console.log(login);
   console.log(bio);
+  const url2 = `https://api.github.com/users/${login}/repos`
+  fetch(url2).then(res => res.json()).then(newListaRepo=>setListaRepo(newListaRepo)).catch(error=>console.log(error));
+   console.log(listaRepo);
   }
    
   
@@ -56,7 +60,7 @@ function App() {
         <button type='submit'>Send data</button> */}
       </form>
       {data&&<DataDetails  data={data} onSendMessage={handleMessage}/>}
-     
+       {listaRepo&&listaRepo.map((lr)=> {return (<div key={lr.id}>{lr.name}</div>)} )}
     </div>
   );
 }

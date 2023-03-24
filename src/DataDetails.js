@@ -44,7 +44,7 @@ export default function DataDetails( {data, onSendMessage}) {
         
         {message}
 
-      
+      {/* <RepoDetails /> */}
      
      
      
